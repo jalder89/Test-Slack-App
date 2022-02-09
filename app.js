@@ -71,7 +71,7 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
       view: {
         trype: 'modal',
         callback_id: 'view_1',
-        tritle: {
+        title: {
           type: 'plain_text',
           text: 'Button Clicked Modal'
         },
