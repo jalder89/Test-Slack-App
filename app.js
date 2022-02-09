@@ -119,7 +119,7 @@ app.action('modal-button-click', async ({ ack, body, logger }) => {
                     "value": "value-3"
                   }
                 ],
-                "action_id": "actionId-3"
+                "action_id": "modal-action-submit"
               }
             ]
           }
@@ -133,6 +133,10 @@ app.action('modal-button-click', async ({ ack, body, logger }) => {
   catch (error) {
     logger.error(error);
   }
+});
+
+app.view('view_1', async ({ ack, body, logger }) => {
+  ack();
 });
 
 (async () => {
