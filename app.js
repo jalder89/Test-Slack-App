@@ -62,7 +62,7 @@ app.command('/sendthread', async ({ command, ack, client }) => {
   }
 });
 
-app.action('modal-button-click', async ({ ack, body, logger }) => {
+app.action('modal-button-click', async ({ ack, body, client, logger }) => {
   await ack();
 
   try {
