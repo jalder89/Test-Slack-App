@@ -13,7 +13,24 @@ app.command('/sendmessage', async ({ command, ack, client }) => {
   try{
     const result = await client.chat.postMessage({
       channel: command.text,
-      text: "Slash Command Triggered!"
+      text: "Slash Command Triggered!",
+      blocks: [{
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "Push this button to open a modal!"
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Open Modal",
+            "emoji": true
+          },
+          "value": "modal_open_1",
+          "action_id": "modal-button-click"
+        }
+      }]
     });
 
     console.log(result);
