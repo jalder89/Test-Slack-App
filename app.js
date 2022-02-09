@@ -6,7 +6,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
-app.command('/sendMessage', async ({ command, ack, client }) => {
+app.command('/sendmessage', async ({ command, ack, client }) => {
   // Acknowledge command request
   await ack();
 
