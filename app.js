@@ -6,6 +6,28 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+app.command('/sendMessage', async ({ command, ack, client }) => {
+  // Acknowledge command request
+  await ack();
+
+  try{
+
+    const result = await client.chat.postMessage({
+      channel: command.text,
+      text: "Slash Command Triggered!"
+    });
+
+    console.log(result);
+
+  }
+
+  catch (error) {
+    console.error(error);
+  }
+
+  
+});
+
 (async () => {
   // Start your app
   await app.start(Number(process.env.PORT || 3000));
