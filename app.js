@@ -31,7 +31,7 @@ app.command('/sendthread', async ({ command, ack, client }) => {
 
   try{
     const result = await client.chat.postMessage({
-      channel: U02K1UEUV9S,
+      channel: "U02K1UEUV9S",
       thread_ts: command.text,
       text: "Slash Command Threaded!"
     });
