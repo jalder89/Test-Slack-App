@@ -11,14 +11,12 @@ app.command('/sendmessage', async ({ command, ack, client }) => {
   await ack();
 
   try{
-
     const result = await client.chat.postMessage({
       channel: command.text,
       text: "Slash Command Triggered!"
     });
 
     console.log(result);
-
   }
 
   catch (error) {
@@ -26,6 +24,24 @@ app.command('/sendmessage', async ({ command, ack, client }) => {
   }
 
   
+});
+
+app.command('/sendthread', async ({ command, ack, client }) => {
+  await ack();
+
+  try{
+    const result = await client.chat.postMessage({
+      channel: U02K1UEUV9S,
+      thread_ts: command.text,
+      text: "Slash Command Threaded!"
+    });
+
+    console.log(result);
+  }
+
+  catch (error) {
+    console.error(error);
+  }
 });
 
 (async () => {
