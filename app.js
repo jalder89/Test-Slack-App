@@ -1,4 +1,5 @@
 const { App } = require('@slack/bolt');
+const { getLogger } = require('@slack/web-api/dist/logger');
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -58,6 +59,79 @@ app.command('/sendthread', async ({ command, ack, client }) => {
 
   catch (error) {
     console.error(error);
+  }
+});
+
+app.action('modal-button-click', async ({ ack, body, logger }) => {
+  await ack();
+
+  try {
+    const result = await client.views.open({
+      trigger_id: body.trigger_id,
+      view: {
+        trype: 'modal',
+        callback_id: 'view_1',
+        tritle: {
+          type: 'plain_text',
+          text: 'Button Clicked Modal'
+        },
+        blocks: [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "Hello there! \n\nPlease select an option from the menu below:"
+            }
+          },
+          {
+            "type": "actions",
+            "elements": [
+              {
+                "type": "static_select",
+                "placeholder": {
+                  "type": "plain_text",
+                  "text": "Select an item",
+                  "emoji": true
+                },
+                "options": [
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 1",
+                      "emoji": true
+                    },
+                    "value": "value-1"
+                  },
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 2",
+                      "emoji": true
+                    },
+                    "value": "value-2"
+                  },
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 3",
+                      "emoji": true
+                    },
+                    "value": "value-3"
+                  }
+                ],
+                "action_id": "actionId-3"
+              }
+            ]
+          }
+        ]
+      }
+    });
+
+    logger.info(result);
+  }
+
+  catch (error) {
+    logger.error(error);
   }
 });
 
