@@ -69,7 +69,7 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
     const result = await client.views.open({
       trigger_id: body.trigger_id,
       view: {
-        trype: 'modal',
+        type: 'modal',
         callback_id: 'view_1',
         title: {
           type: 'plain_text',
