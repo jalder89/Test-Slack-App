@@ -44,6 +44,43 @@ app.command('/sendmessage', async ({ command, ack, client }) => {
   
 });
 
+app.command('/sendmessage2', async ({ command, ack, client }) => {
+  // Acknowledge command request
+  await ack();
+
+  try{
+    const result = await client.chat.postMessage({
+      channel: command.text,
+      text: "Slash Command Triggered!",
+      blocks: [{
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "Push this button to open a modal!"
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Open Modal",
+            "emoji": true
+          },
+          "value": "modal_open_2",
+          "action_id": "open-modal-button"
+        }
+      }]
+    });
+
+    console.log(result);
+  }
+
+  catch (error) {
+    console.error(error);
+  }
+
+  
+});
+
 app.command('/sendthread', async ({ command, ack, client }) => {
   await ack();
 
@@ -137,6 +174,87 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
 
 app.view('view_1', async ({ ack, body, logger }) => {
   ack();
+});
+
+app.action('open-modal-button', async ({ ack, body, client, logger }) => {
+  await ack();
+
+  try {
+    const result = await client.views.open({
+      trigger_id: body.trigger_id,
+      view: {
+        type: 'modal',
+        callback_id: 'view_1',
+        title: {
+          type: 'plain_text',
+          text: 'Button Clicked Modal'
+        },
+        blocks: [
+          {
+            "type": "input",
+            "block_id": "acronym",
+            "element": {
+              "type": "plain_text_input",
+              "action_id": "acronym-action",
+              "initial_value": "ABC"
+            },
+            "label": {
+              "type": "plain_text",
+              "text": "Acronym:",
+              "emoji": true
+            }
+          },
+          {
+            "type": "input",
+            "block_id": "definition",
+            "element": {
+              "type": "plain_text_input",
+              "action_id": "definition-action",
+              "initial_value": "Acronym Definition"
+            },
+            "label": {
+            "type": "plain_text",
+            "text": "Definition:",
+            "emoji": true
+            }
+          },
+          {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Submit Correction",
+                "emoji": true
+              },
+                "value": "submit",
+                "style": "primary",
+                "action_id": "add_definition"
+              },
+              {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "Close",
+                  "emoji": true
+                },
+                  "value": "close",
+                  "style": "danger",
+                  "action_id": "exit_definition"
+              }
+            ]
+          }
+        ]
+      }
+    });
+
+    logger.info(result);
+  }
+
+  catch (error) {
+    logger.error(error);
+  }
 });
 
 (async () => {
