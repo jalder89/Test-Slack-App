@@ -184,7 +184,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
       trigger_id: body.trigger_id,
       view: {
         type: 'modal',
-        callback_id: 'view_1',
+        callback_id: 'view_2',
         title: {
           type: 'plain_text',
           text: 'Button Clicked Modal'
