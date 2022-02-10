@@ -181,76 +181,10 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 
   try {
     const result = await client.views.open({
-      // trigger_id: body.trigger_id,
-      // view: {
-      //   type: 'modal',
-      //   callback_id: 'view_2',
-      //   title: {
-      //     type: 'plain_text',
-      //     text: 'Button Clicked Modal'
-      //   },
-      //   blocks: [
-      //     {
-      //       "type": "input",
-      //       "block_id": "acronym",
-      //       "element": {
-      //         "type": "plain_text_input",
-      //         "action_id": "acronym-action",
-      //         "initial_value": "ABC"
-      //       },
-      //       "label": {
-      //         "type": "plain_text",
-      //         "text": "Acronym:",
-      //         "emoji": true
-      //       }
-      //     },
-      //     {
-      //       "type": "input",
-      //       "block_id": "definition",
-      //       "element": {
-      //         "type": "plain_text_input",
-      //         "action_id": "definition-action",
-      //         "initial_value": "Acronym Definition"
-      //       },
-      //       "label": {
-      //       "type": "plain_text",
-      //       "text": "Definition:",
-      //       "emoji": true
-      //       }
-      //     },
-      //     {
-      //     "type": "actions",
-      //     "elements": [
-      //       {
-      //         "type": "button",
-      //         "text": {
-      //           "type": "plain_text",
-      //           "text": "Submit Correction",
-      //           "emoji": true
-      //         },
-      //           "value": "submit",
-      //           "style": "primary",
-      //           "action_id": "add_definition"
-      //         },
-      //         {
-      //           "type": "button",
-      //           "text": {
-      //             "type": "plain_text",
-      //             "text": "Close",
-      //             "emoji": true
-      //           },
-      //             "value": "close",
-      //             "style": "danger",
-      //             "action_id": "exit_definition"
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // }
       trigger_id: body.trigger_id,
       view: {
         type: 'modal',
-        callback_id: 'view_1',
+        callback_id: 'view_2',
         title: {
           type: 'plain_text',
           text: 'Button Clicked Modal'
@@ -305,6 +239,64 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           }
         ]
       }
+      // trigger_id: body.trigger_id,
+      // view: {
+      //   type: 'modal',
+      //   callback_id: 'view_1',
+      //   title: {
+      //     type: 'plain_text',
+      //     text: 'Button Clicked Modal'
+      //   },
+      //   blocks: [
+      //     {
+      //       "type": "section",
+      //       "text": {
+      //         "type": "mrkdwn",
+      //         "text": "Hello there! \n\nPlease select an option from the menu below:"
+      //       }
+      //     },
+      //     {
+      //       "type": "actions",
+      //       "elements": [
+      //         {
+      //           "type": "static_select",
+      //           "placeholder": {
+      //             "type": "plain_text",
+      //             "text": "Select an item",
+      //             "emoji": true
+      //           },
+      //           "options": [
+      //             {
+      //               "text": {
+      //                 "type": "plain_text",
+      //                 "text": "Item 1",
+      //                 "emoji": true
+      //               },
+      //               "value": "value-1"
+      //             },
+      //             {
+      //               "text": {
+      //                 "type": "plain_text",
+      //                 "text": "Item 2",
+      //                 "emoji": true
+      //               },
+      //               "value": "value-2"
+      //             },
+      //             {
+      //               "text": {
+      //                 "type": "plain_text",
+      //                 "text": "Item 3",
+      //                 "emoji": true
+      //               },
+      //               "value": "value-3"
+      //             }
+      //           ],
+      //           "action_id": "modal-action-submit"
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // }
     });
 
     logger.info(result);
