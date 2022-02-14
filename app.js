@@ -189,6 +189,14 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           type: 'plain_text',
           text: 'Button Clicked Modal'
         },
+        close: {
+          type: "plain_text",
+          text: "Nevermind"
+        },
+        submit: {
+          type: "plain_text",
+          text: "Submit"
+        },
         blocks: [
           {
             "type": "section",
