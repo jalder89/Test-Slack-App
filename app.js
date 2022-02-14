@@ -197,7 +197,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           type: "plain_text",
           text: "Submit"
         },
-        notify_on_close: "true",
+        notify_on_close: true,
         blocks: [
           {
             "type": "input",
