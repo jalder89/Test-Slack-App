@@ -199,19 +199,15 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
         },
         blocks: [
           {
-            "type": "section",
-            "block_id": "section-identifier",
-            "text": {
-              "type": "mrkdwn",
-              "text": "*Welcome* to ~my~ Block Kit _modal_!"
+            "type": "input",
+            "element": {
+              "type": "plain_text_input",
+              "action_id": "plain_text_input-action"
             },
-            "accessory": {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Just a button"
-              },
-              "action_id": "button-identifier"
+            "label": {
+              "type": "plain_text",
+              "text": "Enter Some Text:",
+              "emoji": true
             }
           }
         ]
