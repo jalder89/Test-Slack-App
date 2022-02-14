@@ -283,7 +283,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 
 app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, client, logger }) => {
   ack();
-  logger.info(body.state);
+  console.log("Your State: " + body.state)
 });
 
 (async () => {
