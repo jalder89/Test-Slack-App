@@ -192,50 +192,19 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
         blocks: [
           {
             "type": "section",
+            "block_id": "section-identifier",
             "text": {
               "type": "mrkdwn",
-              "text": "Hello there! \n\nPlease select an option from the menu below:"
+              "text": "*Welcome* to ~my~ Block Kit _modal_!"
+            },
+            "accessory": {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Just a button"
+              },
+              "action_id": "button-identifier"
             }
-          },
-          {
-            "type": "actions",
-            "elements": [
-              {
-                "type": "static_select",
-                "placeholder": {
-                  "type": "plain_text",
-                  "text": "Select an item",
-                  "emoji": true
-                },
-                "options": [
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 1",
-                      "emoji": true
-                    },
-                    "value": "value-1"
-                  },
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 2",
-                      "emoji": true
-                    },
-                    "value": "value-2"
-                  },
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 3",
-                      "emoji": true
-                    },
-                    "value": "value-3"
-                  }
-                ],
-                "action_id": "modal-action-submit"
-              }
-            ]
           }
         ]
       }
