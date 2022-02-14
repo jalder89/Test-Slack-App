@@ -197,6 +197,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           type: "plain_text",
           text: "Submit"
         },
+        notify_on_close: "true",
         blocks: [
           {
             "type": "input",
@@ -278,6 +279,11 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
   catch (error) {
     logger.error(error);
   }
+});
+
+app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, client, logger }) => {
+  ack();
+  logger.info(body);
 });
 
 (async () => {
