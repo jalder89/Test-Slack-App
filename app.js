@@ -143,6 +143,48 @@ app.command('/buttontest', async ({ command, ack, client }) => {
   }
 });
 
+app.action('actionTest-01', async ({ ack, body, client, logger }) => {
+  await ack();
+
+  try {
+    const result = await client.postMessage({
+      channel: "C02NCBQS1PV",
+      text: "Slash Command Triggered!",
+      blocks: [
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 3",
+                "emoji": true
+              },
+              "value": "Test_3",
+              "action_id": "actionTest-03"
+            },
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 4",
+                "emoji": true
+              },
+              "value": "Test_4",
+              "action_id": "actionTest-04"
+            }
+          ]
+        }
+      ]
+    })
+  }
+
+  catch {
+
+  }
+});
+
 app.action('modal-button-click', async ({ ack, body, client, logger }) => {
   await ack();
 
