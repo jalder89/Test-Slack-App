@@ -177,11 +177,13 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
           ]
         }
       ]
-    })
+    });
+
+    console.log(result)
   }
 
-  catch {
-
+  catch (error) {
+    console.error(error);
   }
 });
 
