@@ -198,6 +198,7 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
       ]
     });
 
+    messageTS = result.ts;
     console.log(messageTS)
   }
 
@@ -258,7 +259,8 @@ app.action('actionTest-02', async ({ ack, body, client, logger }) => {
         }
       ]
     });
-
+    
+    messageTS = result.ts;
     console.log(messageTS)
   }
 
