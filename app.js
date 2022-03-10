@@ -7,6 +7,8 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+let messageTS = 0;
+
 app.command('/sendmessage', async ({ command, ack, client }) => {
   // Acknowledge command request
   await ack();
@@ -135,6 +137,7 @@ app.command('/buttontest', async ({ command, ack, client }) => {
       ]
     });
 
+    messageTS = result.ts;
     console.log(result);
   }
 
@@ -145,6 +148,21 @@ app.command('/buttontest', async ({ command, ack, client }) => {
 
 app.action('actionTest-01', async ({ ack, body, client, logger }) => {
   await ack();
+
+  try {
+
+    const result = await client.chat.update({
+      channel: "C02NCBQS1PV",
+      ts: `${messageTS}`,
+      text: "Slash Command Triggered"
+    })
+
+    console.log(result)
+  }
+
+  catch {
+    
+  }
 
   try {
     const result = await client.chat.postMessage({
@@ -185,6 +203,7 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
   catch (error) {
     console.error(error);
   }
+
 });
 
 app.action('modal-button-click', async ({ ack, body, client, logger }) => {
