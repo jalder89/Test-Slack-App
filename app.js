@@ -147,7 +147,7 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
   await ack();
 
   try {
-    const result = await client.postMessage({
+    const result = await client.chat.postMessage({
       channel: "C02NCBQS1PV",
       text: "Slash Command Triggered!",
       blocks: [
