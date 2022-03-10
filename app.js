@@ -207,6 +207,109 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
 
 });
 
+app.action('actionTest-02', async ({ ack, body, client, logger }) => {
+  await ack();
+
+  try {
+
+    const result = await client.chat.update({
+      channel: "C02NCBQS1PV",
+      ts: `${messageTS}`,
+      blocks: [],
+      text: "Slash Command Triggered"
+    })
+
+    console.log(messageTS)
+  }
+
+  catch (error) {
+    console.log(error)
+  }
+
+  try {
+    const result = await client.chat.postMessage({
+      channel: "C02NCBQS1PV",
+      text: "Slash Command Triggered!",
+      blocks: [
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 3",
+                "emoji": true
+              },
+              "value": "Test_3",
+              "action_id": "actionTest-03"
+            },
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 4",
+                "emoji": true
+              },
+              "value": "Test_4",
+              "action_id": "actionTest-04"
+            }
+          ]
+        }
+      ]
+    });
+
+    console.log(messageTS)
+  }
+
+  catch (error) {
+    console.error(error);
+  }
+
+});
+
+app.action('actionTest-03', async ({ ack, body, client, logger }) => {
+  await ack();
+
+  try {
+
+    const result = await client.chat.update({
+      channel: "C02NCBQS1PV",
+      ts: `${messageTS}`,
+      blocks: [],
+      text: "Slash Command Complete!"
+    })
+
+    console.log(messageTS)
+  }
+
+  catch (error) {
+    console.log(error)
+  }
+
+});
+
+app.action('actionTest-04', async ({ ack, body, client, logger }) => {
+  await ack();
+
+  try {
+
+    const result = await client.chat.update({
+      channel: "C02NCBQS1PV",
+      ts: `${messageTS}`,
+      blocks: [],
+      text: "Slash Command Complete!"
+    })
+
+    console.log(messageTS)
+  }
+
+  catch (error) {
+    console.log(error)
+  }
+
+});
+
 app.action('modal-button-click', async ({ ack, body, client, logger }) => {
   await ack();
 
