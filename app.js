@@ -99,6 +99,23 @@ app.command('/sendthread', async ({ command, ack, client }) => {
   }
 });
 
+app.command('/buttontest', async ({ command, ack, client }) => {
+  await ack();
+
+  try{
+    const result = await client.chat.postMessage({
+      channel: "C02NCBQS1PV",
+      text: "Slash Command Triggered!"
+    });
+
+    console.log(result);
+  }
+
+  catch (error) {
+    console.error(error);
+  }
+});
+
 app.action('modal-button-click', async ({ ack, body, client, logger }) => {
   await ack();
 
