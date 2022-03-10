@@ -105,7 +105,34 @@ app.command('/buttontest', async ({ command, ack, client }) => {
   try{
     const result = await client.chat.postMessage({
       channel: "C02NCBQS1PV",
-      text: "Slash Command Triggered!"
+      text: "Slash Command Triggered!",
+      blocks: [
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 1",
+                "emoji": true
+              },
+              "value": "Test_1",
+              "action_id": "actionTest-01"
+            },
+            {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Test 2",
+                "emoji": true
+              },
+              "value": "Test_2",
+              "action_id": "actionTest-02"
+            }
+          ]
+        }
+      ]
     });
 
     console.log(result);
