@@ -157,11 +157,11 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
       text: "Slash Command Triggered"
     })
 
-    console.log(result)
+    console.log(messageTS)
   }
 
-  catch {
-    
+  catch (error) {
+    console.log(error)
   }
 
   try {
@@ -197,7 +197,7 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
       ]
     });
 
-    console.log(result)
+    console.log(messageTS)
   }
 
   catch (error) {
