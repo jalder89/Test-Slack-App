@@ -154,6 +154,7 @@ app.action('actionTest-01', async ({ ack, body, client, logger }) => {
     const result = await client.chat.update({
       channel: "C02NCBQS1PV",
       ts: `${messageTS}`,
+      blocks: [],
       text: "Slash Command Triggered"
     })
 
