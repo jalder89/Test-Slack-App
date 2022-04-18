@@ -568,8 +568,8 @@ const ws = new WorkflowStep('add_task', {
       }
     ];
 
-    console.log("inputs: " + {inputs});
-    console.log("outputs: " + {outputs});
+    console.log("inputs: " + JSON.stringify(inputs));
+    console.log("outputs: " + JSON.stringify(outputs));
     await update({ inputs, outputs });
   },
   execute: async ({ step, complete, fail }) => {
