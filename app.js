@@ -1,4 +1,4 @@
-const { App } = require('@slack/bolt');
+const { App, WorkflowStep } = require('@slack/bolt');
 const { getLogger } = require('@slack/web-api/dist/logger');
 
 // Initializes your app with your bot token and signing secret
@@ -498,6 +498,15 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
   ack();
   console.log("Your State: " + `${JSON.stringify(body.view.state.values)}`)
 });
+
+// Create a new WorkflowStep instance
+const ws = new WorkflowStep('add_task', {
+  edit: async ({ ack, step, configure }) => {},
+  save: async ({ ack, step, update }) => {},
+  execute: async ({ step, complete, fail }) => {},
+});
+
+app.step(ws);
 
 (async () => {
   // Start your app
