@@ -605,10 +605,10 @@ const ws2 = new WorkflowStep('user_test', {
 
     const blocks = [
       {
-        type: 'users_select',
+        type: 'input',
         block_id: 'user_name_input',
         element: {
-          type: 'plain_text_input',
+          type: 'users_select',
           action_id: 'user',
           placeholder: {
             type: 'plain_text',
