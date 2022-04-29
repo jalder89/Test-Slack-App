@@ -622,6 +622,22 @@ const ws2 = new WorkflowStep('user_test', {
       },
       {
         type: 'input',
+        block_id: 'conversation_name_input',
+        element: {
+          type: 'conversations_select',
+          action_id: 'conversation',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Select a conversation',
+          },
+        },
+        label: {
+          type: 'plain_text',
+          text: 'Conversation',
+        },
+      },
+      {
+        type: 'input',
         block_id: 'task_description_input',
         element: {
           type: 'plain_text_input',
