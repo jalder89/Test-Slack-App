@@ -597,6 +597,103 @@ const ws = new WorkflowStep('add_task', {
 
 app.step(ws);
 
+const ws2 = new WorkflowStep('user_test', {
+  edit: async ({ ack, step, configure }) => {
+    console.log(`ack start`);
+    await ack();
+    console.log(`ack end`);
+
+    const blocks = [
+      {
+        type: 'users_select',
+        block_id: 'user_name_input',
+        element: {
+          type: 'plain_text_input',
+          action_id: 'user',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Select a user',
+          },
+        },
+        label: {
+          type: 'plain_text',
+          text: 'User',
+        },
+      },
+      {
+        type: 'input',
+        block_id: 'task_description_input',
+        element: {
+          type: 'plain_text_input',
+          action_id: 'description',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Add a task description',
+          },
+        },
+        label: {
+          type: 'plain_text',
+          text: 'Task description',
+        },
+      },
+    ];
+
+    await configure({ blocks });
+  },
+  save: async ({ ack, step, view, update }) => {
+    await ack();
+
+    const { values } = view.state;
+    const taskName = values.user_name_input.name;
+    const taskDescription = values.task_description_input.description;
+                
+    const inputs = {
+      taskName: { value: taskName.value, skip_variable_replacement: true },
+      taskDescription: { value: taskDescription.value }
+    };
+
+    const outputs = [
+      {
+        type: 'text',
+        name: 'taskName',
+        label: 'Task name',
+      },
+      {
+        type: 'text',
+        name: 'taskDescription',
+        label: 'Task description',
+      }
+    ];
+
+    console.log("inputs: " + JSON.stringify(inputs));
+    console.log("outputs: " + JSON.stringify(outputs));
+    await update({ inputs, outputs });
+  },
+  execute: async ({ step, complete, fail }) => {
+    const { inputs } = step;
+
+    const outputs = {
+      taskName: inputs.taskName.value,
+      taskDescription: inputs.taskDescription.value,
+    };
+
+    // signal back to Slack that everything was successful
+    await complete({ outputs });
+    // NOTE: If you run your app with processBeforeResponse: true option,
+    // `await complete()` is not recommended because of the slow response of the API endpoint
+    // which could result in not responding to the Slack Events API within the required 3 seconds
+    // instead, use:
+    // complete({ outputs }).then(() => { console.log('workflow step execution complete registered'); });
+
+    // let Slack know if something went wrong
+    // await fail({ error: { message: "Just testing step failure!" } });
+    // NOTE: If you run your app with processBeforeResponse: true, use this instead:
+    // fail({ error: { message: "Just testing step failure!" } }).then(() => { console.log('workflow step execution failure registered'); });
+  },
+});
+
+app.step(ws2);
+
 (async () => {
   // Start your app
   await app.start(Number(process.env.PORT || 3000));
