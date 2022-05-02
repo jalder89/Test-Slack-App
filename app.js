@@ -574,6 +574,7 @@ const ws = new WorkflowStep('add_task', {
   },
   execute: async ({ step, complete, fail }) => {
     const { inputs } = step;
+    console.log(inputs);
 
     const outputs = {
       taskName: inputs.taskName.value,
