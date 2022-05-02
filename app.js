@@ -551,7 +551,7 @@ const ws = new WorkflowStep('add_task', {
     const taskDescription = values.task_description_input.description;
                 
     const inputs = {
-      taskName: { value: taskName.value, skip_variable_replacement: true },
+      taskName: { value: taskName.value, skip_variable_replacement: false },
       taskDescription: { value: taskDescription.value }
     };
 
