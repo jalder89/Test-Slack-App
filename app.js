@@ -102,7 +102,7 @@ app.command('/sendthread', async ({ command, ack, client }) => {
 });
 
 app.command('/buttontest', async ({ command, ack, client }) => {
-  await ack();
+  console.log(await ack());
 
   try{
     const result = await client.chat.postMessage({
