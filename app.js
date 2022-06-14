@@ -466,7 +466,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           },
           {
             "type": "image",
-            "image_url": "https://i1.wp.com/thetempest.co/wp-content/uploads/2017/08/The-wise-words-of-Michael-Scott-Imgur-2.jpg?w=1024&ssl=1",
+            "image_url": "https://slack-files.com/T1DD3JH3K-F03K5UJMXFH-081abbb18e",
             "alt_text": "inspiration"
           }
         ]
