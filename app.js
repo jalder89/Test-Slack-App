@@ -416,7 +416,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           text: "Submit"
         },
         notify_on_close: true,
-        block: [
+        blocks: [
           {
             "type": "section",
             "text": {
