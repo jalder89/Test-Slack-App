@@ -466,7 +466,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           },
           {
             "type": "image",
-            "image_url": "https://slack-files.com/T1DD3JH3K-F03K5UJMXFH-081abbb18e",
+            "image_url": "https://files.slack.com/files-pri/T1DD3JH3K-F03K5UJMXFH/128x128.jpg?pub_secret=081abbb18e",
             "alt_text": "inspiration"
           }
         ]
