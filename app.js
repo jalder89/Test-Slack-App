@@ -372,6 +372,11 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
                 "action_id": "modal-action-submit"
               }
             ]
+          },
+          {
+            "type": "image",
+            "image_url": "https://slack-files.com/T1DD3JH3K-F03K5UJMXFH-081abbb18e",
+            "alt_text": "inspiration"
           }
         ]
       }
