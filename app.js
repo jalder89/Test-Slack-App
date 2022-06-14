@@ -416,20 +416,74 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           text: "Submit"
         },
         notify_on_close: true,
-        blocks: [
+        block: [
           {
-            "type": "input",
-            "element": {
-              "type": "plain_text_input",
-              "action_id": "plain_text_input-action"
-            },
-            "label": {
-              "type": "plain_text",
-              "text": "Enter Some Text:",
-              "emoji": true
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "Hello there! \n\nPlease select an option from the menu below:"
             }
+          },
+          {
+            "type": "actions",
+            "elements": [
+              {
+                "type": "static_select",
+                "placeholder": {
+                  "type": "plain_text",
+                  "text": "Select an item",
+                  "emoji": true
+                },
+                "options": [
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 1",
+                      "emoji": true
+                    },
+                    "value": "value-1"
+                  },
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 2",
+                      "emoji": true
+                    },
+                    "value": "value-2"
+                  },
+                  {
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Item 3",
+                      "emoji": true
+                    },
+                    "value": "value-3"
+                  }
+                ],
+                "action_id": "modal-action-submit"
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "image_url": "https://i1.wp.com/thetempest.co/wp-content/uploads/2017/08/The-wise-words-of-Michael-Scott-Imgur-2.jpg?w=1024&ssl=1",
+            "alt_text": "inspiration"
           }
         ]
+        // blocks: [
+        //   {
+        //     "type": "input",
+        //     "element": {
+        //       "type": "plain_text_input",
+        //       "action_id": "plain_text_input-action"
+        //     },
+        //     "label": {
+        //       "type": "plain_text",
+        //       "text": "Enter Some Text:",
+        //       "emoji": true
+        //     }
+        //   }
+        // ]
       }
       // trigger_id: body.trigger_id,
       // view: {
