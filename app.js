@@ -427,7 +427,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           {
             "type": "image",
             "image_url": "https://files.slack.com/files-pri/T1DD3JH3K-F03KE320EK0/pexels-christian-heitz-842711.jpg?pub_secret=9eb84202ef",
-            "alt_text": "inspiration"
+            "alt_text": "inspirational"
           }
         ]
         // blocks: [
