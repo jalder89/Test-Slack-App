@@ -425,46 +425,6 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             }
           },
           {
-            "type": "actions",
-            "elements": [
-              {
-                "type": "static_select",
-                "placeholder": {
-                  "type": "plain_text",
-                  "text": "Select an item",
-                  "emoji": true
-                },
-                "options": [
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 1",
-                      "emoji": true
-                    },
-                    "value": "value-1"
-                  },
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 2",
-                      "emoji": true
-                    },
-                    "value": "value-2"
-                  },
-                  {
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Item 3",
-                      "emoji": true
-                    },
-                    "value": "value-3"
-                  }
-                ],
-                "action_id": "modal-action-submit"
-              }
-            ]
-          },
-          {
             "type": "image",
             "image_url": "https://files.slack.com/files-pri/T1DD3JH3K-F03KE320EK0/pexels-christian-heitz-842711.jpg?pub_secret=9eb84202ef",
             "alt_text": "inspiration"
