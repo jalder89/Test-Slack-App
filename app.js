@@ -521,29 +521,31 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 // Message filtering for message event listener
 
 async function noParentMessages({ message, next }) {
-  if (!message.subtype && message.subtype == 'message_replied') {
+  if (!message.subtype || message.subtype == 'message_replied') {
     await next();
   }
 }
 
 app.message(noParentMessages, async ({message, client, logger}) => {
   console.log('Message reply received' + '\nmessage: ' + message.subtype);
-  try {
-    // Call chat.scheduleMessage with the built-in client
-    const result = await client.chat.postMessage({
-      channel: message.channel,
-      thread_ts: message.thread_ts,
-      blocks: [{
-           "type": "section", 
-           "text": {
-                "type": "plain_text", 
-                "text": "Hello you!"
-            }
-      }]
-    });
-  }
-  catch (error) {
-    logger.error(error);
+  if (message.ts !== message.thread_ts){
+    try {
+      // Call chat.scheduleMessage with the built-in client
+      const result = await client.chat.postMessage({
+        channel: message.channel,
+        thread_ts: message.thread_ts,
+        blocks: [{
+             "type": "section", 
+             "text": {
+                  "type": "plain_text", 
+                  "text": "Hello you!"
+              }
+        }]
+      });
+    }
+    catch (error) {
+      logger.error(error);
+    }
   }
 });
 
