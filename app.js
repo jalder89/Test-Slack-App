@@ -521,7 +521,7 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 // Message filtering for message event listener
 
 async function noParentMessages({ message, next }) {
-  if (!message.subtype || message.subtype == 'message_replied') {
+  if (message.subtype == 'message_replied') {
     await next();
   }
 }
