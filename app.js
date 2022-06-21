@@ -1,4 +1,4 @@
-const { App, WorkflowStep } = require('@slack/bolt');
+const { App, WorkflowStep, subtype } = require('@slack/bolt');
 const { getLogger } = require('@slack/web-api/dist/logger');
 
 // Initializes your app with your bot token and signing secret
@@ -518,11 +518,10 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
   console.log("Your State: " + `${JSON.stringify(body.view.state.values)}`)
 });
 
-app.message('Hey', async (message, client, logger) => {
+app.message('Hey', async (message, event, client, logger) => {
+  console.log('Hey received' + event.subtype);
   
-  console.log('Hey received' + message.subtype);
-  
-  if(message.subtype == 'message_replied'){
+  if(event.subtype == 'message_replied'){
     try {
       // Call chat.scheduleMessage with the built-in client
       const result = await client.chat.postMessage({
