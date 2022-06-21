@@ -528,7 +528,7 @@ async function noParentMessages({ message, next }) {
 
 app.message(noParentMessages, async ({message, client, logger}) => {
   console.log('Message reply received' + '\nmessage_ts: ' + message.ts + '\nmessage_thread_ts: ' + message.thread_ts);
-  if (!message.thread_ts){
+  if (message.thread_ts){
     try {
       // Call chat.scheduleMessage with the built-in client
       const result = await client.chat.postMessage({
