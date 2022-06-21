@@ -520,7 +520,7 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 
 app.message('Hey', async (message, client, logger) => {
   
-  console.log('Hey received');
+  console.log('Hey received' + message.subtype);
   
   if(message.subtype == 'message_replied'){
     try {
