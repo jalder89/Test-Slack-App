@@ -518,6 +518,28 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
   console.log("Your State: " + `${JSON.stringify(body.view.state.values)}`)
 });
 
+app.message('Hey', async (message, client, logger) => {
+  if(message.subtype == 'message_replied'){
+    try {
+      // Call chat.scheduleMessage with the built-in client
+      const result = await client.chat.postMessage({
+        channel: message.channel,
+        thread_ts: message.thread_ts,
+        blocks: [{
+             "type": "section", 
+             "text": {
+                  "type": "plain_text", 
+                  "text": "Hello you!"
+              }
+        }]
+      });
+    }
+    catch (error) {
+      logger.error(error);
+    }
+  }
+});
+
 // Create a new WorkflowStep instance
 const ws = new WorkflowStep('add_task', {
   edit: async ({ ack, step, configure }) => {
