@@ -519,6 +519,9 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 });
 
 app.message('Hey', async (message, client, logger) => {
+  
+  console.log('Hey received');
+  
   if(message.subtype == 'message_replied'){
     try {
       // Call chat.scheduleMessage with the built-in client
