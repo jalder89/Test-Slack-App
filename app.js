@@ -519,7 +519,7 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 });
 
 app.message('Hey', async ({message, event, client, logger}) => {
-  console.log('Hey received' + '\nmessage: ' + message.subtype + '\nevent: ' + event.subtype);
+  console.log('Hey received' + '\nmessage: ' + JSON.stringify(message) + '\nevent: ' + JSON.stringify(event));
   
   if(event == 'message_replied'){
     try {
