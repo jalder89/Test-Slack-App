@@ -538,7 +538,7 @@ app.message(noParentMessages, async ({message, client, logger}) => {
              "type": "section", 
              "text": {
                   "type": "plain_text", 
-                  "text": "Hello you!"
+                  "text": "Hello you..."
               }
         }]
       });
