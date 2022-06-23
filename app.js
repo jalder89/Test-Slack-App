@@ -520,44 +520,42 @@ app.view({ callback_id: 'view_2', type: 'view_closed' }, async ({ ack, body, cli
 
 // Message filtering for message event listener
 
-async function noParentMessages({ message, next }) {
+async function newMessages({ message, next }) {
   if (!message.subtype || message.subtype == 'message_replied') {
     await next();
   }
 }
 
-app.message(noParentMessages, async ({message, client, logger}) => {
+app.message(newMessages, async ({message, client, logger}) => {
   console.log('Message reply received' + '\nmessage_ts: ' + message.ts + '\nmessage_thread_ts: ' + message.thread_ts);
-  if (message.thread_ts){
-    try {
-      // Call chat.scheduleMessage with the built-in client
-      const result = await client.chat.postMessage({
-        channel: message.channel,
-        thread_ts: message.thread_ts,
-        blocks: [
-          {
-            "type": "section",
+  try {
+    // Call chat.scheduleMessage with the built-in client
+    const result = await client.chat.postMessage({
+      channel: message.channel,
+      thread_ts: message.thread_ts,
+      blocks: [
+        {
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "Testing a modal button on iPhone"
+          },
+          "accessory": {
+            "type": "button",
             "text": {
-              "type": "mrkdwn",
-              "text": "Testing a modal button on iPhone"
+              "type": "plain_text",
+              "text": "Open Form",
+              "emoji": true
             },
-            "accessory": {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Open Form",
-                "emoji": true
-              },
-              "value": "form_iPhone_opened",
-              "action_id": "open-modal-button"
-            }
+            "value": "form_iPhone_opened",
+            "action_id": "open-modal-button"
           }
-        ]
-      });
-    }
-    catch (error) {
-      logger.error(error);
-    }
+        }
+      ]
+    });
+  }
+  catch (error) {
+    logger.error(error);
   }
 });
 
