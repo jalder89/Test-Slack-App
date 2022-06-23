@@ -534,13 +534,25 @@ app.message(noParentMessages, async ({message, client, logger}) => {
       const result = await client.chat.postMessage({
         channel: message.channel,
         thread_ts: message.thread_ts,
-        blocks: [{
-             "type": "section", 
-             "text": {
-                  "type": "plain_text", 
-                  "text": "Hello you..."
-              }
-        }]
+        blocks: [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "Testing a modal button on iPhone"
+            },
+            "accessory": {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Open Form",
+                "emoji": true
+              },
+              "value": "form_iPhone_opened",
+              "action_id": "open-modal-button"
+            }
+          }
+        ]
       });
     }
     catch (error) {
