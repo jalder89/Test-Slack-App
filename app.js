@@ -773,11 +773,11 @@ const ws2 = new WorkflowStep('user_test', {
 app.step(ws2);
 //#endregion
 
-app.message(/^(Jess|jess|Jessica|Jess|Jess!|jess!|Jessica!|Jess!).*/, async ({ context, say }) => {
+app.message(`Jess`, async ({ message, say }) => {
   // RegExp matches are inside of context.matches
-  const greeting = context.matches[0];
+  const greeting = message.user;
 
-  await say(`${greeting}, how are you?`);
+  await say(`<@${greeting}>, how are you?`);
 });
 
 (async () => {
