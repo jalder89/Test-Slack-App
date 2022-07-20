@@ -7,6 +7,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+//#region Massive Block
 let messageTS = 0;
 
 app.command('/sendmessage', async ({ command, ack, client }) => {
@@ -770,6 +771,14 @@ const ws2 = new WorkflowStep('user_test', {
 });
 
 app.step(ws2);
+//#endregion
+
+app.message(/^(Jess|jess|Jessica|Jess).*/, async ({ context, say }) => {
+  // RegExp matches are inside of context.matches
+  const greeting = context.matches[0];
+
+  await say(`${greeting}, how are you?`);
+});
 
 (async () => {
   // Start your app
