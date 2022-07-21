@@ -391,8 +391,8 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
   }
 });
 
-app.view('view_1', async ({ ack, body, logger }) => {
-  ack();
+app.view('view_1', async ({ ack}) => {
+  await ack();
 });
 
 app.action('open-modal-button', async ({ ack, body, client, logger }) => {
