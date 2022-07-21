@@ -331,7 +331,7 @@ app.action('modal-button-click', async ({ ack, body, client, logger }) => {
             "type": "section",
             "text": {
               "type": "mrkdwn",
-              "text": "Hello there! \n\nPlease select an option from the menu below:"
+              "text": "Hello there <@U02K1UEUV9S>! \n\nPlease select an option from the menu below:"
             }
           },
           {
