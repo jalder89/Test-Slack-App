@@ -429,6 +429,22 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             "type": "image",
             "image_url": "https://files.slack.com/files-pri/T1DD3JH3K-F03KE320EK0/pexels-christian-heitz-842711.jpg?pub_secret=6666b11f23",
             "alt_text": "inspiration"
+          },
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "Test block with users select"
+            },
+            "accessory": {
+              "type": "users_select",
+              "placeholder": {
+                "type": "plain_text",
+                "text": "Select a user",
+                "emoji": true
+              },
+              "action_id": "users_select-action"
+            }
           }
         ]
         // blocks: [
