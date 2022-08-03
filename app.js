@@ -445,6 +445,23 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
               },
               "action_id": "users_select-action"
             }
+          },
+          {
+            "type": "input",
+            "element": {
+              "type": "multi_users_select",
+              "placeholder": {
+                "type": "plain_text",
+                "text": "Select users",
+                "emoji": true
+              },
+              "action_id": "multi_users_select-action"
+            },
+            "label": {
+              "type": "plain_text",
+              "text": "Label",
+              "emoji": true
+            }
           }
         ]
         // blocks: [
