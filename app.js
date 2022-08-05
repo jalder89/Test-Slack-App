@@ -545,8 +545,9 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 
 // User select Action listener for open-modal-button
 app.action('plain_text_input-action', async ({ ack, body, client, logger }) => {
+  console.log("Text input action event received")
   await ack();
-  console.log("Text input received");
+  console.log("Text input ack");
   // Update the message to reflect the action
   try {
     // Call views.update with the built-in client
