@@ -448,10 +448,10 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           },
           {
             "type": "input",
-            "min_length": 2,
             "element": {
               "type": "plain_text_input",
-              "action_id": "plain_text_input-action"
+              "action_id": "plain_text_input-action",
+              "min_length": 2
             },
             "label": {
               "type": "plain_text",
