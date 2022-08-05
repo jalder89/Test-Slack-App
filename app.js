@@ -459,7 +459,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             },
             "label": {
               "type": "plain_text",
-              "text": "Label",
+              "text": "User Select",
               "emoji": true
             }
           }
@@ -542,6 +542,49 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
     logger.info(result);
   }
 
+  catch (error) {
+    logger.error(error);
+  }
+});
+
+// User select Action listener for open-modal-button
+app.action('multi_users_select-action', async ({ ack, body, client, logger }) => {
+  await ack();
+  // Update the message to reflect the action
+  try {
+    // Call views.update with the built-in client
+    const result = await client.views.update({
+      // Pass the view_id
+      view_id: body.view.id,
+      // Pass the current hash to avoid race conditions
+      hash: body.view.hash,
+      // View payload with updated blocks
+      view: {
+        type: 'modal',
+        // View identifier
+        callback_id: 'view_2',
+        title: {
+          type: 'plain_text',
+          text: 'Updated modal'
+        },
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'plain_text',
+              text: '<@U02K1UEUV9S> updated the modal!'
+            }
+          },
+          {
+            type: 'image',
+            image_url: 'https://media.giphy.com/media/SVZGEcYt7brkFUyU90/giphy.gif',
+            alt_text: 'Yay! The modal was updated'
+          }
+        ]
+      }
+    });
+    logger.info(result);
+  }
   catch (error) {
     logger.error(error);
   }
