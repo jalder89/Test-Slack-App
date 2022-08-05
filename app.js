@@ -447,19 +447,19 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             }
           },
           {
-            "type": "input",
-            "element": {
-              "type": "plain_text_input",
-              "action_id": "input_action",
-              "dispatch_action_config": {
-                "trigger_actions_on": ["on_character_entered"]
+            "type": "actions",
+            "elements": [
+              {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "Update View",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "action_id": "update_view"
               }
-            },
-            "label": {
-              "type": "plain_text",
-              "text": "Text Input",
-              "emoji": true
-            }
+            ]
           }
         ]
         // blocks: [
@@ -546,7 +546,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 });
 
 // User select Action listener for open-modal-button
-app.action('input_action', async ({ ack, body, client, logger }) => {
+app.action('update_view', async ({ ack, body, client, logger }) => {
   console.log("Text input action event received")
   await ack();
   console.log("Text input ack");
