@@ -450,7 +450,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             "type": "input",
             "element": {
               "type": "plain_text_input",
-              "action_id": "plain_text_input-action",
+              "action_id": "input_action",
               "min_length": 2,
               "dispatch_action_config": {
                 "trigger_actions_on": ["on_character_entered"]
@@ -547,7 +547,7 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 });
 
 // User select Action listener for open-modal-button
-app.action('plain_text_input-action', async ({ ack, body, client, logger }) => {
+app.action('input_action', async ({ ack, body, client, logger }) => {
   console.log("Text input action event received")
   await ack();
   console.log("Text input ack");
@@ -563,7 +563,7 @@ app.action('plain_text_input-action', async ({ ack, body, client, logger }) => {
       view: {
         type: 'modal',
         // View identifier
-        callback_id: 'view_3',
+        callback_id: 'view_2',
         title: {
           type: 'plain_text',
           text: 'Updated modal'
