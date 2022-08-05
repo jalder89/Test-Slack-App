@@ -448,18 +448,14 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
           },
           {
             "type": "input",
+            "min_length": 2,
             "element": {
-              "type": "multi_users_select",
-              "placeholder": {
-                "type": "plain_text",
-                "text": "Select users",
-                "emoji": true
-              },
-              "action_id": "multi_users_select-action"
+              "type": "plain_text_input",
+              "action_id": "plain_text_input-action"
             },
             "label": {
               "type": "plain_text",
-              "text": "User Select",
+              "text": "Text Input",
               "emoji": true
             }
           }
@@ -548,8 +544,9 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
 });
 
 // User select Action listener for open-modal-button
-app.action('multi_users_select-action', async ({ ack, body, client, logger }) => {
+app.action('plain_text_input-action', async ({ ack, body, client, logger }) => {
   await ack();
+  console.log("Text input received");
   // Update the message to reflect the action
   try {
     // Call views.update with the built-in client
@@ -562,7 +559,7 @@ app.action('multi_users_select-action', async ({ ack, body, client, logger }) =>
       view: {
         type: 'modal',
         // View identifier
-        callback_id: 'view_2',
+        callback_id: 'view_3',
         title: {
           type: 'plain_text',
           text: 'Updated modal'
