@@ -571,7 +571,7 @@ app.action('update_view', async ({ ack, body, client, logger }) => {
           {
             type: 'section',
             text: {
-              type: 'plain_text',
+              type: 'mrkdwn',
               text: '<@U02K1UEUV9S> updated the modal!'
             }
           },
