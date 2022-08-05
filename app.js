@@ -451,7 +451,6 @@ app.action('open-modal-button', async ({ ack, body, client, logger }) => {
             "element": {
               "type": "plain_text_input",
               "action_id": "input_action",
-              "min_length": 2,
               "dispatch_action_config": {
                 "trigger_actions_on": ["on_character_entered"]
               }
