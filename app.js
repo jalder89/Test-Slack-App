@@ -1,5 +1,6 @@
 const { App, WorkflowStep, subtype } = require('@slack/bolt');
 const { getLogger } = require('@slack/web-api/dist/logger');
+require('dotenv').config()
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
